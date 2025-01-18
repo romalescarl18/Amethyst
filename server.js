@@ -19,7 +19,7 @@ const swaggerDocs = require('./swaggerOptions');
 connectDB();
 
 // routes
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use('/api/jokes', jokeRoutes); 
 app.use('/api/bible', bibleRoutes);
 app.use('/api/quotes', quoteRoutes);

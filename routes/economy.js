@@ -2,38 +2,6 @@ const express = require('express');
 const router = express.Router();
 const economyHelper = require('../helpers/economyHelper');
 
-/**
- * @swagger
- * /api/jokes/{id}:
- *   get:
- *     summary: Get a joke by ID
- *     description: Returns a specific joke by its ID
-  *     tags:
- *       - Jokes API
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         description: ID of the joke
- *         schema:
- *           type: string
- *           example: "1"
- *     responses:
- *       200:
- *         description: A specific joke
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 joke:
- *                   type: string
- *                   example: "Why don't skeletons fight each other? They don't have the guts."
- *       404:
- *         description: Joke not found
- *       500:
- *         description: Internal server error
- */
 router.get('/balance/:username', async (req, res) => {
   try {
     const balance = await economyHelper.getBalance(req.params.username);

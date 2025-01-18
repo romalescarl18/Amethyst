@@ -122,15 +122,14 @@ router.get('/random', async (req, res) => {
  */
 
 router.get('/:book/:chapter/:verse', async (req, res) => {
-    let { book, chapter, verse } = req.params;  // Extract parameters from the URL
+    let { book, chapter, verse } = req.params; 
   
-    // Normalize the book name to lowercase
-    book = book.charAt(0).toUpperCase() + book.slice(1).toLowerCase();  // Title case: "genesis" becomes "Genesis"
+    book = book.charAt(0).toUpperCase() + book.slice(1).toLowerCase();  
   
     try {
-      const verseData = await bibleHelper.getVerseByCitation(book, chapter, verse);  // Fetch the verse based on the reference
+      const verseData = await bibleHelper.getVerseByCitation(book, chapter, verse);  
       if (!verseData) {
-        return res.status(404).json({ message: 'Bible verse not found' });  // If no verse is found, return a 404
+        return res.status(404).json({ message: 'Bible verse not found' }); 
       }
       res.json({
         citation: verseData.citation,

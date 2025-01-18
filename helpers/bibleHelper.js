@@ -17,9 +17,8 @@ const getRandomVerse = async () => {
 
 const getVerseByCitation = async (book, chapter, verse) => {
     try {
-        // Query the database with a case-insensitive regular expression for the book
         const verseData = await BibleVerse.findOne({
-          book: { $regex: new RegExp(book, 'i') },  // Case-insensitive query
+          book: { $regex: new RegExp(book, 'i') }, 
           chapter,
           verse
         });

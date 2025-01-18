@@ -77,12 +77,12 @@ router.get('/random', async (req, res) => {
  */
 
 router.get('/:id', async (req, res) => {
-  const { id } = req.params;  // Get the ID from the URL parameters
+  const { id } = req.params; 
 
   try {
-    const joke = await jokeService.getJokeById(id);  // Use a service function to fetch the joke by ID
+    const joke = await jokeService.getJokeById(id); 
     if (!joke) {
-      return res.status(404).json({ message: 'Joke not found' });  // Return 404 if no joke is found
+      return res.status(404).json({ message: 'Joke not found' });  
     }
     res.json({
       ID: joke.ID,

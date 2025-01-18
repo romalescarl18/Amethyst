@@ -62,7 +62,7 @@ const router = express.Router();
  */
 
 router.get('/status', async (req, res) => {
-  const { server, port = 25565 } = req.query;  // Default port for Java is 25565
+  const { server, port = 25565 } = req.query;
 
   if (!server) {
     return res.status(400).json({ message: 'Server address is required.' });

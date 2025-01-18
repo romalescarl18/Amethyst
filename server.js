@@ -1,5 +1,5 @@
 const express = require('express');
-const connectDB = require('./lib/MongoDB'); 
+const connectDB = require('./lib/database'); 
 
 // Import routes
 const jokeRoutes = require('./routes/jokes');  

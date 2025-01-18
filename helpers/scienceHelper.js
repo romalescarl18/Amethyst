@@ -1,10 +1,10 @@
-const Sciences = require("../models/Science"); // Assuming you have a Quote model
+const Sciences = require("../models/Science"); 
 
 const getRandomScienceQuestion = async () => {
   try {
-    const count = await Sciences.countDocuments(); // Get the total number of quotes in the collection
-    const randomIndex = Math.floor(Math.random() * count); // Random index
-    const randomQuestion = await Sciences.findOne().skip(randomIndex); // Get a random quote by skipping the random index
+    const count = await Sciences.countDocuments(); 
+    const randomIndex = Math.floor(Math.random() * count); 
+    const randomQuestion = await Sciences.findOne().skip(randomIndex); 
     return randomQuestion;
   } catch (err) {
     throw new Error("Error fetching random science question: " + err.message);

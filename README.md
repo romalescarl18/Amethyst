@@ -82,6 +82,7 @@ This project provides a collection of APIs for various functionalities, includin
 
 - **POST /api/minecraft/status**
   - Checks the status of a Minecraft server.
+  - Example Request: /api/minecraft/status?server=ip&port=port
 
 ---
 
@@ -95,13 +96,16 @@ This project provides a collection of APIs for various functionalities, includin
   - Retrieves the balance of a specific user.
 
 - **POST /api/economy/earn**
-  - Adds money to a user's balance.
+  - Adds money to a user's balance. (Creates an account if user does not exist)
+  - Example Request: {"username": "username", "amount": "number"}
 
 - **POST /api/economy/spend**
   - Deducts money from a user's balance.
+  - Example Request: {"username": "username", "amount": "number"}
 
 - **POST /api/economy/transfer**
   - Transfers money between two users.
+  - Example Request: {"from": "username", "to": "username", "amount": "number"}
 
 ---
 
@@ -131,7 +135,7 @@ This project provides a collection of APIs for various functionalities, includin
 
 ---
 
-## Technologies Used
+## Libraries and Framework Used
 
 - **Node.js**: Server-side runtime environment.
 - **Express.js**: Framework for building APIs.

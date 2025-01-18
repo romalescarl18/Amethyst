@@ -1,4 +1,4 @@
-const User = require('../models/Economy');
+const User = require("../models/Economy");
 
 const getUserByUsername = async (username) => {
   return await User.findOne({ username });
@@ -19,27 +19,25 @@ const getBalance = async (username) => {
   return user ? user.balance : null;
 };
 
-const earnMoney = async (username, amount, description) => {
+const earnMoney = async (username, amount) => {
   const user = await createUserIfNotExists(username);
   user.balance += amount;
-  user.transactionHistory.push({ amount, description });
   await user.save();
   return user.balance;
 };
 
-const spendMoney = async (username, amount, description) => {
+const spendMoney = async (username, amount) => {
   const user = await createUserIfNotExists(username);
   if (user.balance >= amount) {
     user.balance -= amount;
-    user.transactionHistory.push({ amount: -amount, description });
     await user.save();
     return user.balance;
   } else {
-    throw new Error('Insufficient balance');
+    throw new Error("Insufficient balance");
   }
 };
 
-const transferMoney = async (fromUsername, toUsername, amount, description) => {
+const transferMoney = async (fromUsername, toUsername, amount) => {
   const fromUser = await createUserIfNotExists(fromUsername);
   const toUser = await createUserIfNotExists(toUsername);
 
@@ -47,16 +45,42 @@ const transferMoney = async (fromUsername, toUsername, amount, description) => {
     fromUser.balance -= amount;
     toUser.balance += amount;
 
-    fromUser.transactionHistory.push({ amount: -amount, description });
-    toUser.transactionHistory.push({ amount, description });
-
     await fromUser.save();
     await toUser.save();
 
     return { fromBalance: fromUser.balance, toBalance: toUser.balance };
   } else {
-    throw new Error('Insufficient balance');
+    throw new Error("Insufficient balance");
   }
 };
 
-module.exports = { getBalance, earnMoney, spendMoney, transferMoney };
+const updateUser = async (username, updates) => {
+  const { newUsername, balance } = updates;
+
+  const user = await User.findOne({ username });
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  if (newUsername) {
+    user.username = newUsername;
+  }
+
+  if (balance !== undefined) {
+    user.balance = balance;
+  }
+
+  user.updatedAt = new Date();
+
+  await user.save();
+
+  return user;
+};
+
+module.exports = {
+  getBalance,
+  earnMoney,
+  spendMoney,
+  transferMoney,
+  updateUser,
+};

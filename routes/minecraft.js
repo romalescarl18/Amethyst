@@ -1,5 +1,5 @@
 const express = require('express');
-const GameDig = require('gamedig');  // Import gamedig library
+const { GameDig } = require('gamedig'); 
 const router = express.Router();
 
 /**
@@ -76,11 +76,12 @@ router.get('/status', async (req, res) => {
     });
 
     res.json({
-      online: status.online,
-      players: status.players.length,
-      maxPlayers: status.maxplayers,
-      map: status.map,
-      motd: status.motd,
+      name: status.name,
+      isLocked: status.password,
+      ping: status.ping,
+      players: `${status.numplayers}/${status.maxplayers}`,
+      version: status.version,
+      connect: status.connect,
     });
   } catch (error) {
     console.error('Error fetching Minecraft Java server status:', error);

@@ -11,7 +11,7 @@ const bibleHelper = require('../helpers/bibleHelper');
 
 /**
  * @swagger
- * /api/bibleVerses/random:
+ * /api/bible/random:
  *   get:
  *     summary: Get a random Bible verse
  *     description: Returns a random Bible verse from the collection
@@ -64,7 +64,7 @@ router.get('/random', async (req, res) => {
 
 /**
  * @swagger
- * /api/bibleVerses/{book}/{chapter}/{verse}:
+ * /api/bible/{book}/{chapter}/{verse}:
  *   get:
  *     summary: Get a Bible verse by book, chapter, and verse
  *     description: Returns a specific Bible verse based on the book, chapter, and verse

@@ -13,7 +13,7 @@ const minecraftRoutes = require('./routes/minecraft');
 
 // express app whatsoever
 const app = express();
-const port = process.env.PORT;
+const port = `${process.env.PORT}`;
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocs = require('./swaggerOptions'); 
 

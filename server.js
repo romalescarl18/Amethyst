@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDB = require('./lib/database'); 
+require('dotenv').config();
 
 // Import routes
 const jokeRoutes = require('./routes/jokes');  
@@ -12,7 +13,7 @@ const minecraftRoutes = require('./routes/minecraft');
 
 // express app whatsoever
 const app = express();
-const port = 80;
+const port = process.env.PORT;
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocs = require('./swaggerOptions'); 
 

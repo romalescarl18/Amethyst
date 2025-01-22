@@ -12,7 +12,7 @@ const minecraftRoutes = require('./routes/minecraft');
 
 // express app whatsoever
 const app = express();
-const port = 3001;
+const port = 80;
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocs = require('./swaggerOptions'); 
 
